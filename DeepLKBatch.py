@@ -1,19 +1,13 @@
 import torch
 import torch.nn as nn
-from torchvision import models, transforms
-import io
-import requests
+from torchvision import transforms
 from PIL import Image
 from torch.autograd import Variable
 from torch.nn.functional import grid_sample
-from pdb import set_trace as st
 from sys import argv
-import argparse
-import time
-from math import cos, sin, pi, sqrt
-import sys
-import time
 import numpy as np
+from math import cos, sin, pi, sqrt
+import time
 
 # USE_CUDA = torch.cuda.is_available()
 # 修改，由于GPU大小的限制，我们只用CPU进行测试过程
@@ -132,6 +126,8 @@ def warp_hmg(img, p):
 	batch_size, k, h, w = img.size()
 
 	# if isinstance(img, torch.autograd.variable.Variable):
+	# p = [3, 0, 7200, 0, 3, 7200, 0, 0]
+	# p = torch.from_numpy(np.expand_dims(np.array(p,),(0,2))).to(torch.float32)
 	if isinstance(img, torch.autograd.Variable):
 		if USE_CUDA:
 			x = Variable(torch.arange(w).cuda())
@@ -154,9 +150,10 @@ def warp_hmg(img, p):
 			# create xy matrix, 2 x N
 			xy = torch.cat((X.view(1, X.numel()), Y.view(1, Y.numel()), Variable(torch.ones(1, X.numel()).cuda())), 0)
 		else:
-			xy = torch.cat((X.view(1, X.numel()), Y.view(1, Y.numel()), Variable(torch.ones(1, X.numel()))), 0)
+			xy = torch.cat((X.view(1, X.numel()).float(), Y.view(1, Y.numel()).float(), Variable(torch.ones(1, X.numel()))), 0)
 	else:
-		xy = torch.cat((X.view(1, X.numel()), Y.view(1, Y.numel()), torch.ones(1, X.numel())), 0)
+		# xy = torch.cat((X.view(1, X.numel()), Y.view(1, Y.numel()), torch.ones(1, X.numel())), 0)
+		xy = torch.cat((X.view(1, X.numel()).float(), Y.view(1, Y.numel()).float(), torch.ones(1, X.numel())), 0)
 
 	xy = xy.repeat(batch_size, 1, 1)
 
@@ -177,10 +174,11 @@ def warp_hmg(img, p):
 	return img_warp, mask, xy_patch_org_cor
 
 
-def warp_hmg_Noncentric(img, p, xy_cor_curr):
+def warp_hmg_Noncentric(img, p, xy_cor_curr, img_w = 300, img_h = 225):
 	# 对于warp_hmg的自定义重写，
 	# 得到warped and croped图片的坐标 xy_cor_curr，在p warp参数下，于img中的位置
 	# return [x_patch_org_cor, y_patch_org_cor] 返回在大图中的位置
+	# img是大地图，img_w与img_h是航拍图尺寸，两者含义不同
 
 	img = torch.from_numpy(img).unsqueeze(0).float()
 	batch_size, k, h, w = img.shape
@@ -233,8 +231,6 @@ def warp_hmg_Noncentric(img, p, xy_cor_curr):
 	else:
 		# 在这里考虑patch的crop以及resize的问题
 		# 人为指定出img的尺寸大小
-		img_w = 300
-		img_h = 225
 		aspect = img_w / img_h
 		adj_img_w = round(aspect * h)  # 计算符合长宽比的基准图宽度
 		left = round(w / 2 - adj_img_w / 2)
@@ -243,10 +239,14 @@ def warp_hmg_Noncentric(img, p, xy_cor_curr):
 		lower = h
 		x_cor_curr = round(xy_cor_curr[1]*(h/img_h))
 		y_cor_curr = round(xy_cor_curr[0]*(h/img_h) + left + 1)
-
-		x_patch_org_cor = round(X_warp[0, x_cor_curr, y_cor_curr].item())
-		y_patch_org_cor = round(Y_warp[0, x_cor_curr, y_cor_curr].item())
-		print(x_patch_org_cor, y_patch_org_cor)
+		if 0 <= x_cor_curr <= h and 0 <= y_cor_curr <= w:
+			x_patch_org_cor = round(X_warp[0, x_cor_curr, y_cor_curr].item())
+			y_patch_org_cor = round(Y_warp[0, x_cor_curr, y_cor_curr].item())
+			# print(x_patch_org_cor, y_patch_org_cor)
+		else:
+			# 计算错误的情况
+			x_patch_org_cor = 0
+			y_patch_org_cor = 0
 
 	return [x_patch_org_cor, y_patch_org_cor]
 
@@ -502,7 +502,7 @@ class custom_net(nn.Module):
 	def __init__(self, model_path):
 		super(custom_net, self).__init__()
 
-		print('Loading pretrained network...', end='')
+		print('Loading pretrained network...',end='')
 		self.custom = torch.load(model_path, map_location=lambda storage, loc: storage)
 		print('done')
 
@@ -538,8 +538,7 @@ class DeepLK(nn.Module):
 			Ft = self.conv_func(temp)
 			stop = time.time()
 			Fi = self.conv_func(img)
-
-		# print('Feature size: '+str(Ft.size()))
+			# print('Feature size: '+str(Ft.size()))
 
 		else:
 			Fi = img
