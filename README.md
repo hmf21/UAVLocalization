@@ -48,7 +48,7 @@ If other datasets need to be tested, please change the configuration in `utility
   <img width="600" height="300" src="asset/architecture_for_loc.png">
 </p>
 
-The fine localization is achieve with frame-to-map alignment. For more details, please refer to the `UAVLoc.py` and files in `scripts/`.
+The fine localization is achieve with frame-to-map alignment. For more details, please refer to the `main.py` and files in `scripts/`.
 
 ## Code-Structure
 ```
@@ -65,9 +65,9 @@ The fine localization is achieve with frame-to-map alignment. For more details, 
 
 ## Resources-Download
 
-* DATASETS: All the datasets for this research have been open-sourced at the [this link](https://cloud.tsinghua.edu.cn/d/149b03e8c78948e5b8bb/)
+* DATASETS: All the datasets for this research have been open-sourced at the [this link](https://cloud.tsinghua.edu.cn/d/149b03e8c78948e5b8bb/).
 
-* Pretrained Weights: The pretrained weights
+* Pretrained Weights: The pretrained weights have been also given at the [this link](https://cloud.tsinghua.edu.cn/d/149b03e8c78948e5b8bb/).
 
 ## Acknowledgements
 
