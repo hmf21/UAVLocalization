@@ -1,13 +1,15 @@
 # Leveraging Map Retrieval and Alignment for Robust UAV Visual Geo-Localization
+
 * [Introduction](##Introduction)
-* [Get Started](##Get-Started)
-* [Absolut Localization Flow](##Absolut-Localization-Flow)
-* [Code Structure](##Code-Structure)
-* [Dataset Download](##Dataset-Download)
-* [Acknowledgements](##Acknowledgements)
-* [Citation](##Citation)
+  * [Get Started](##Get-Started)
+  * [Absolut Localization Flow](##Absolut-Localization-Flow)
+  * [Code Structure](##Code-Structure)
+  * [Dataset Download](##Dataset-Download)
+  * [Acknowledgements](##Acknowledgements)
+  * [Citation](##Citation)
 
 ## Introduction
+
 This project focuses on development of a robust geo-localization system on aerial platform leveraging by deep-learning based map retrieval and alignment. 
 Two public datasets from [Ageagle](https://ageagle.com/resources/?filter_by=data-set) have been re-organized  to evaluate the proposed algorithms.
 A field test in Beijing Haidian has been also conducted to demonstrate the effectiveness of the localization system.	
@@ -19,26 +21,34 @@ A field test in Beijing Haidian has been also conducted to demonstrate the effec
 <p align="center">
   <img width="600" height="338" src="asset/flight_example_in_field_test.gif">
 </p>
+
+
 ## Get-Started
 
 **Install dependencies:**
 
-
+The environment we use 
 
 **Prepare the dataset:**	
 
-**Retrieve semantics:**
+**Test on the dataset:**
 
-**Preview the data:**
+For more details, please refer to the 
 
 ## Absolute-Localization-Flow
+
+<p align="center">
+  <img width="600" height="300" src="asset/architecture_for_loc.png">
+</p>
+
 The 
 
 ## Code-Structure
+
 Some tips here:
 
 * To change 
-* To change
+  * To change
 
 ## Dataset-Download
 
