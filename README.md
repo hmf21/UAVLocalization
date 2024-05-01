@@ -1,11 +1,11 @@
 # Leveraging Map Retrieval and Alignment for Robust UAV Visual Geo-Localization
 * [Introduction](##Introduction)
-  * [Get Started](##Get-Started)
-  * [Absolut Localization Flow](##Absolut-Localization-Flow)
-  * [Code Structure](##Code-Structure)
-  * [Resources Download](##Resources-Download)
-  * [Acknowledgements](##Acknowledgements)
-  * [Citation](##Citation)
+* [Get Started](##Get-Started)
+* [Absolut Localization Flow](##Absolut-Localization-Flow)
+* [Code Structure](##Code-Structure)
+* [Resources Download](##Resources-Download)
+* [Acknowledgements](##Acknowledgements)
+* [Citation](##Citation)
 
 ## Introduction
 This project focuses on development of a robust geo-localization system on aerial platform leveraging by deep-learning based map retrieval and alignment. 
