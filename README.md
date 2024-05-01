@@ -1,5 +1,4 @@
 # Leveraging Map Retrieval and Alignment for Robust UAV Visual Geo-Localization
-
 * [Introduction](##Introduction)
   * [Get Started](##Get-Started)
   * [Absolut Localization Flow](##Absolut-Localization-Flow)
@@ -9,7 +8,6 @@
   * [Citation](##Citation)
 
 ## Introduction
-
 This project focuses on development of a robust geo-localization system on aerial platform leveraging by deep-learning based map retrieval and alignment. 
 Two public datasets from [Ageagle](https://ageagle.com/resources/?filter_by=data-set) have been re-organized  to evaluate the proposed algorithms.
 A field test in Beijing Haidian has been also conducted to demonstrate the effectiveness of the localization system.	
@@ -21,7 +19,6 @@ A field test in Beijing Haidian has been also conducted to demonstrate the effec
 <p align="center">
   <img width="600" height="338" src="asset/flight_example_in_field_test.gif">
 </p>
-
 
 ## Get-Started
 
@@ -47,7 +44,6 @@ python UAVLoc.py
 If other datasets need to be tested, please change the configuration in `utility/config.py`.
 
 ## Absolute-Localization-Flow
-
 <p align="center">
   <img width="600" height="300" src="asset/architecture_for_loc.png">
 </p>
@@ -55,11 +51,17 @@ If other datasets need to be tested, please change the configuration in `utility
 The fine localization is achieve with frame-to-map alignment. For more details, please refer to the `UAVLoc.py` and files in `scripts/`.
 
 ## Code-Structure
+```
+.
++--- asset
++--- datasets
++--- main.py
++--- README.md
++--- scripts
++--- setup
++--- utility
 
-Some tips here:
-
-* To change 
-* To change
+```
 
 ## Resources-Download
 
@@ -69,10 +71,18 @@ Some tips here:
 
 ## Acknowledgements
 
-In particular, we thank 
+In particular, we appreciate the following online resources to support the training and testing in this work.
 
-We also appreciate the following open-sourced researches and tools:
+* [Ageagle](https://ageagle.com/resources/?filter_by=data-set)
+* [USGS](https://earthexplorer.usgs.gov/)
+
+We also express our gratitude for these open-sourced researches and parts of this work are inspired by them.
+
+* [HF-Net](https://github.com/ethz-asl/hfnet)
+* [2019 ICRA Goforth](https://github.com/hmgoforth/gps-denied-uav-localization)
+* [DVGL Benchmark](https://github.com/gmberton/deep-visual-geo-localization-benchmark)
+* [NetVLAD](https://github.com/lyakaap/NetVLAD-pytorch)
 
 ## Citation
 
-[1] 
+(related publication waiting for reviewing)
