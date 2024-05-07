@@ -24,17 +24,20 @@ A field test in Beijing Haidian has been also conducted to demonstrate the effec
 
 **Install dependencies:**
 
-The environment we use can be seen in `setup/environment.yml`
-
+The environment we use can be seen in `setup/environment.yml`.
 Note this project is mainly built based on the `pytorch` without many additional dependencies.
+And this environment list can be referred if there is any conflicts of dependencies.
 
 **Prepare the dataset:**	
 
-* Our datasets: download and input in the `dataset` directory.
-* Custom dataset: make sure the map contains the actual geo-coordinates and the file of the query images should be re-named as such format: `@number@longitude@latitude@`.
+We use the pre-stored images to represent the scenes captured during the flight.
+
+* Our datasets: please download the datasets and input in the `dataset` directory.
+* Custom dataset: please make sure the map contains the actual geo-coordinates and the file of the query images should be re-named as such format: `@index@longitude@latitude@`.
 
 **Test on the dataset:**
 
+Please make sure the paths for the pretrained weights and the datasets are correct.
 With the evaluation for the Ageagle dataset, simply run:
 
 ```
@@ -51,25 +54,31 @@ If other datasets need to be tested, please change the configuration in `utility
 The fine localization is achieve with frame-to-map alignment. For more details, please refer to the `main.py` and files in `scripts/`.
 
 ## Code-Structure
+The file structure is shown as the following. 
+At present, we only provide the main files, and all the related files will be released after the article is published.
+
 ```
 .
-+--- asset
-+--- datasets
-+--- main.py
-+--- README.md
-+--- scripts
-+--- setup
-+--- utility
++--- asset          # asset for this repository
++--- datasets       # path to save the geo-referenced map and captured frames
++--- models         # path to save the pretrained network weights
++--- scripts        # essential scripts for network models
++--- setup          # statement for the dependencies
++--- utility        # essential utilities to load image and visualize
++--- main.py        # main programme
++--- README.md      
 
 ```
 
 ## Resources-Download
 
-* DATASETS: All the datasets for this research have been open-sourced at the [this link](https://cloud.tsinghua.edu.cn/d/149b03e8c78948e5b8bb/).
+* DATASETS: All the datasets for this research have been open-sourced at the [this link](https://cloud.tsinghua.edu.cn/d/eebd9d4c83eb4fe2b20c/).
 
-* Pretrained Weights: The pretrained weights have been also given at the [this link](https://cloud.tsinghua.edu.cn/d/149b03e8c78948e5b8bb/).
+* Pretrained Weights: The pretrained weights have been also given at the [this link](https://cloud.tsinghua.edu.cn/d/eebd9d4c83eb4fe2b20c/).
 
-## Acknowledgements
+(only the Ageagle datasets are available at present and other dataset will be provided after our article is accepted.)
+
+## Acknowledgements 
 
 In particular, we appreciate the following online resources to support the training and testing in this work.
 
