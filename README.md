@@ -1,7 +1,7 @@
 # Leveraging Map Retrieval and Alignment for Robust UAV Visual Geo-Localization
 * [Introduction](#Introduction)
 * [Get Started](#Get-Started)
-* [Absolut Localization Flow](#Absolut-Localization-Flow)
+* [Absolut Localization Flow](#Absolute-Localization-Flow)
 * [Code Structure](#Code-Structure)
 * [Resources Download](#Resources-Download)
 * [Acknowledgements](#Acknowledgements)
