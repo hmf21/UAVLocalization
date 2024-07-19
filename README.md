@@ -74,9 +74,9 @@ At present, we only provide the main files, and all the related files will be re
 
 * DATASETS: All the datasets for this research have been open-sourced at the [this link](https://cloud.tsinghua.edu.cn/d/eebd9d4c83eb4fe2b20c/).
 
-* Pretrained Weights: The pretrained weights have been also given at the [this link](https://cloud.tsinghua.edu.cn/d/eebd9d4c83eb4fe2b20c/).
+* WEIGHTS: The model checkpoints have been also given at the [this link](https://cloud.tsinghua.edu.cn/d/eebd9d4c83eb4fe2b20c/).
 
-(only the Ageagle datasets are available at present and other dataset will be provided after our article is accepted.)
+(only the Ageagle datasets are available at present.)
 
 ## Acknowledgements 
 
